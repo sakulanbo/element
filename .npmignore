@@ -1,0 +1,19 @@
+# Created by .ignore support plugin (hsz.mobi)
+/.github/
+/build/
+/examples/
+/node_modules/
+/test/
+/yarn.lock
+/.babelrc
+/.eslintignore
+/.eslintrc
+/.gitattributes
+/.gitignore
+/.npmignore
+/.travis.yml
+/components.json
+/element_logo.svg
+/FAQ.md
+/lerna.json
+/Makefile

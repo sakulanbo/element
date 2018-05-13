@@ -2,7 +2,7 @@
 @import "common/var";
 
 @include b(card) {
-  border-radius: $--card-border-radius;
+  //border-radius: $--card-border-radius;
   border: 1px solid $--card-border-color;
   background-color: $--color-white;
   overflow: hidden;

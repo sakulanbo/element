@@ -10,9 +10,8 @@
   white-space: nowrap;
   cursor: pointer;
   background: $--button-default-fill;
-  border: $--border-base;
-  border-color: $--button-default-border;
-  color: $--button-default-color;
+  border: $--border-width-base $--border-style-base $--color-primary;
+  color: $--color-primary;
   -webkit-appearance: none;
   text-align: center;
   box-sizing: border-box;
@@ -27,16 +26,14 @@
 
   @include button-size($--button-padding-vertical, $--button-padding-horizontal, $--button-font-size, $--button-border-radius);
 
-  &:hover,
-  &:focus {
-    color: $--color-primary;
-    border-color: $--color-primary-light-7;
-    background-color: $--color-primary-light-9;
+  &:hover{
   }
 
   &:active {
-    color: mix($--color-black, $--color-primary, $--button-active-shade-percent);
+    color: #fff;
     border-color: mix($--color-black, $--color-primary, $--button-active-shade-percent);
+    background: $--color-primary-active;
+    box-shadow: none;
     outline: none;
   }
 
@@ -75,11 +72,13 @@
     &,
     &:hover,
     &:focus {
-      color: $--button-disabled-color;
       cursor: not-allowed;
       background-image: none;
       background-color: $--button-disabled-fill;
-      border-color: $--button-disabled-border;
+      color: $--color-primary;
+      border-color: $--color-primary;
+      opacity: 0.5;
+      box-shadow: none;
     }
 
     &.el-button--text {
@@ -123,6 +122,12 @@
   }
   @include m(primary) {
     @include button-variant($--button-primary-color, $--button-primary-fill, $--button-primary-border);
+    &:hover{
+      background: $--color-primary-hover;
+    }
+    &:active{
+      background: $--color-primary-active;
+    }
   }
   @include m(success) {
     @include button-variant($--button-success-color, $--button-success-fill, $--button-success-border);
@@ -135,6 +140,23 @@
   }
   @include m(info) {
     @include button-variant($--button-info-color, $--button-info-fill, $--button-info-border);
+    &:hover{
+      box-shadow: inset 0px 0px 0px 1px $--color-info;
+    }
+    &:active{
+      background: #CCCCCC;
+      box-shadow: none;
+    }
+    &.is-disabled {
+      &,
+      &:hover,
+      &:focus,
+      &:active {
+        color: $--button-info-color;
+        background-color: $--color-white;
+        border-color: $--color-info;
+      }
+    }
   }
   @include m(medium) {
     @include button-size($--button-medium-padding-vertical, $--button-medium-padding-horizontal, $--button-medium-font-size, $--button-medium-border-radius);
@@ -229,5 +251,11 @@
         border-right-color: rgba($--color-white, 0.5);
       }
     }
+  }
+}
+
+.el-button.red-border{
+  &:hover{
+    box-shadow: inset 0px 0px 0px 1px $--color-primary;
   }
 }
