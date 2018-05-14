@@ -242,6 +242,11 @@ export default {
             this.handleChange(target.value);
           }
         },
+        handleClick() {
+          const value = this.$refs.input.currentValue;
+          if (!value || typeof Number(value) !== 'number') return;
+          this.handleChange(value);
+        },
         handleChange(value) {
           this.$parent.internalCurrentPage = this.$parent.getValidCurrentPage(value);
           this.$parent.emitChange();
@@ -267,22 +272,30 @@ export default {
 
       render(h) {
         return (
-          <span class="el-pagination__jump">
-            { this.t('el.pagination.goto') }
-            <el-input
-              class="el-pagination__editor is-in-pagination"
-              min={ 1 }
-              max={ this.$parent.internalPageCount }
-              value={ this.$parent.internalCurrentPage }
-              domPropsValue={ this.$parent.internalCurrentPage }
-              type="number"
-              ref="input"
-              disabled={ this.$parent.disabled }
-              nativeOnKeyup={ this.handleKeyup }
-              onChange={ this.handleChange }
-              onFocus={ this.handleFocus }
-              onBlur={ this.handleBlur }/>
-            { this.t('el.pagination.pageClassifier') }
+          <span>
+            <span class="el-pagination__jump">
+              { this.t('el.pagination.goto') }
+              <el-input
+                class="el-pagination__editor is-in-pagination"
+                min={ 1 }
+                max={ this.$parent.internalPageCount }
+                value={ this.$parent.internalCurrentPage }
+                domPropsValue={ this.$parent.internalCurrentPage }
+                type="number"
+                ref="input"
+                disabled={ this.$parent.disabled }
+                nativeOnKeyup={ this.handleKeyup }
+                // onChange={ this.handleChange }
+                onFocus={ this.handleFocus }
+                onBlur={ this.handleBlur }/>
+              { this.t('el.pagination.pageClassifier') }
+            </span>
+            <el-button
+              type="info"
+              class="jumpto-btn"
+              onClick={ this.handleClick }>
+          确认跳转
+            </el-button>
           </span>
         );
       }

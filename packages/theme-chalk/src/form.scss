@@ -108,10 +108,45 @@
     color: $--color-danger;
     font-size: 12px;
     line-height: 1;
-    padding-top: 4px;
+    //padding-top: 4px;
     position: absolute;
-    top: 100%;
-    left: 0;
+    right: -20px;
+    transform: translateX(100%) translateY(-50%);
+    top: 50%;
+    z-index: 1;
+    //top: 100%;
+    //left: 0;
+    .xs-tooltip{
+      display: inline-block;
+      min-width: 132px;
+      background: rgba(77,77,77,.8);
+      text-align: left;
+      height: inherit;
+      padding: 12px 24px 12px 12.7px;
+      &:after{
+        border: 5px solid transparent;
+        content: " ";
+        height: 0;
+        right: 100%;
+        position: absolute;
+        width: 0;
+        border-right-color: rgba(77,77,77,.8);
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+    .xs-tooltip-content{
+      i{
+        color: $--color-primary;
+        width: 16px;
+        height: 16px;
+      }
+      display: inline-block;
+      font-size: 14px;
+      line-height: 16px;
+      color: #fff;
+      vertical-align: middle;
+    }
 
     @include m(inline) {
       position: relative;

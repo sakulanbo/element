@@ -44,8 +44,17 @@
     }
   }
 
+  .jumpto-btn{
+    font-weight: normal;
+    width:96px;
+    margin-left:16px;
+    &:hover{
+      color: $--button-info-color;
+    }
+  }
+
   button {
-    border: none;
+    //border: none;
     padding: 0 6px;
     background: transparent;
 
@@ -68,11 +77,11 @@
   .btn-next {
     background: center center no-repeat;
     background-size: 16px;
-    background-color: $--pagination-fill;
     cursor: pointer;
     margin: 0;
     color: $--pagination-button-color;
-
+    background: $--color-white;
+    border: 1px solid #E6E6E6;
     .el-icon {
       display: block;
       font-size: 12px;
@@ -81,11 +90,13 @@
   }
 
   .btn-prev {
-    padding-right: 12px;
+    margin-right: 4px;
+    //padding-right: 12px;
   }
 
   .btn-next {
-    padding-left: 12px;    
+    margin-left: 4px;
+    //padding-left: 12px;
   }
 
   .el-pager li.disabled {
@@ -102,9 +113,9 @@
     .el-pager li:last-child {
       border-color: transparent;
       font-size: 12px;
-      line-height: 22px;
-      height: 22px;
-      min-width: 22px;
+      line-height: 40px;
+      height: 40px;
+      min-width: 40px;
     }
 
     .arrow.disabled {
@@ -250,7 +261,6 @@
 
   li {
     padding: 0 4px;
-    background: $--pagination-fill;
     vertical-align: top;
     display: inline-block;
     font-size: $--pagination-font-size;
@@ -260,13 +270,17 @@
     cursor: pointer;
     box-sizing: border-box;
     text-align: center;
-    margin: 0;
+    margin: 0 4px;
+    background: $--color-white;
+    border: 1px solid #E6E6E6;
+    color: #999999;
 
     &.btn-quicknext,
     &.btn-quickprev {
-      line-height: 28px;
-      color: $--pagination-button-color;
-
+      border: none;
+      line-height: $--pagination-button-height;
+      //color: $--pagination-button-color;
+      color: #999999;
       &.disabled {
         color: $--color-text-placeholder;
       }
@@ -281,7 +295,7 @@
     }
 
     &.active + li {
-      border-left: 0;
+      //border-left: 0;
     }
 
     &:hover {
@@ -289,7 +303,8 @@
     }
 
     &.active {
-      color: $--pagination-hover-fill;
+      color: $--color-white;
+      background: $--color-primary;
       cursor: default;
     }
   }

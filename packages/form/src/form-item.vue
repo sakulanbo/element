@@ -1,5 +1,6 @@
 <template>
-  <div class="el-form-item" :class="[{
+  <section style="position: relative">
+    <div class="el-form-item" :class="[{
       'el-form-item--feedback': elForm && elForm.statusIcon,
       'is-error': validateState === 'error',
       'is-validating': validateState === 'validating',
@@ -8,26 +9,46 @@
     },
     sizeClass ? 'el-form-item--' + sizeClass : ''
   ]">
-    <label :for="labelFor" class="el-form-item__label" v-bind:style="labelStyle" v-if="label || $slots.label">
-      <slot name="label">{{label + form.labelSuffix}}</slot>
-    </label>
-    <div class="el-form-item__content" v-bind:style="contentStyle">
-      <slot></slot>
-      <transition name="el-zoom-in-top">
-        <div
-          v-if="validateState === 'error' && showMessage && form.showMessage"
-          class="el-form-item__error"
-          :class="{
+      <label :for="labelFor" class="el-form-item__label" v-bind:style="labelStyle" v-if="label || $slots.label">
+        <slot name="label">{{label + form.labelSuffix}}</slot>
+      </label>
+      <div class="el-form-item__content" v-bind:style="contentStyle">
+        <slot></slot>
+        <!--<transition name="el-zoom-in-top">-->
+          <!--<div-->
+                  <!--v-if="validateState === 'error' && showMessage && form.showMessage"-->
+                  <!--class="el-form-item__error"-->
+                  <!--:class="{-->
+            <!--'el-form-item__error&#45;&#45;inline': typeof inlineMessage === 'boolean'-->
+              <!--? inlineMessage-->
+              <!--: (elForm && elForm.inlineMessage || false)-->
+          <!--}"-->
+          <!--&gt;-->
+            <!--{{validateMessage}}-->
+          <!--</div>-->
+        <!--</transition>-->
+      </div>
+    </div>
+    <transition name="el-zoom-in-top">
+    <div
+            v-if="validateState === 'error' && showMessage && form.showMessage"
+            class="el-form-item__error"
+            :class="{
             'el-form-item__error--inline': typeof inlineMessage === 'boolean'
               ? inlineMessage
               : (elForm && elForm.inlineMessage || false)
           }"
-        >
+    >
+      <div class="xs-tooltip">
+        <div class="xs-tooltip-content">
+          <i class="el-icon-warning"></i>
           {{validateMessage}}
         </div>
-      </transition>
+      </div>
     </div>
-  </div>
+    </transition>
+  </section>
+
 </template>
 <script>
   import AsyncValidator from 'async-validator';

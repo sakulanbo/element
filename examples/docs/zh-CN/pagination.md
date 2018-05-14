@@ -94,7 +94,6 @@
     </el-pagination>
   </div>
   <div class="block">
-    <span class="demonstration">直接前往</span>
     <el-pagination
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
@@ -214,7 +213,6 @@
 
   .demo-pagination .last .demonstration + .el-pagination {
     float: right;
-    width: 70%;
     margin: 5px 20px 0 0;
   }
 </style>
